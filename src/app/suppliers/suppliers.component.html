@@ -1,0 +1,184 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="panel">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-sm-12 col-xs-12">
+                <button (click)="createSupplier()" class="btn btn-sm btn-primary pull-left">
+                  <mat-icon>add</mat-icon> Add New
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Action</th>
+                  <th>#</th>
+                  <th>Company Name</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>Region</th>
+                  <th>Postal Code</th>
+                  <th>Country</th>
+                  <th>Phone</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let supplier of suppliers; let i = index">
+                  <td>
+                    <ul class="action-list">
+                      <li>
+                        <a
+                          href="#"
+                          (click)="openEditModal(supplier)"
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editSupplierModal"
+                        >
+                          <mat-icon>edit</mat-icon>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          (click)="deleteSupplier(supplier._id)"
+                          class="btn btn-danger"
+                        >
+                          <mat-icon>delete</mat-icon>
+                        </a>
+                      </li>
+                    </ul>
+                  </td>
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ supplier.companyName }}</td>
+                  <td>{{ supplier.address }}</td>
+                  <td>{{ supplier.city }}</td>
+                  <td>{{ supplier.region }}</td>
+                  <td>{{ supplier.postalCode }}</td>
+                  <td>{{ supplier.country }}</td>
+                  <td>{{ supplier.phone }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal para Editar Supplier -->
+  <div
+    class="modal fade"
+    id="editSupplierModal"
+    tabindex="-1"
+    aria-labelledby="editSupplierLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog d-flex justify-content-center">
+      <div class="modal-content w-75 custom-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editSupplierLabel">Edit Supplier</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body text-white bg-dark p-4">
+          <form (ngSubmit)="updateSupplier()">
+            <!-- Company Name input -->
+            <div class="form-outline mb-4">
+              <input
+                type="text"
+                [(ngModel)]="supplier.companyName"
+                name="companyName"
+                class="form-control"
+                placeholder="Company Name"
+              />
+              <label class="form-label" for="companyName">Company Name</label>
+            </div>
+  
+            <!-- Address input -->
+            <div class="form-outline mb-4">
+              <input
+                type="text"
+                [(ngModel)]="supplier.address"
+                name="address"
+                class="form-control"
+                placeholder="Address"
+              />
+              <label class="form-label" for="address">Address</label>
+            </div>
+  
+            <!-- City input -->
+            <div class="form-outline mb-4">
+              <input
+                type="text"
+                [(ngModel)]="supplier.city"
+                name="city"
+                class="form-control"
+                placeholder="City"
+              />
+              <label class="form-label" for="city">City</label>
+            </div>
+  
+            <!-- Region input -->
+            <div class="form-outline mb-4">
+              <input
+                type="text"
+                [(ngModel)]="supplier.region"
+                name="region"
+                class="form-control"
+                placeholder="Region"
+              />
+              <label class="form-label" for="region">Region</label>
+            </div>
+  
+            <!-- Postal Code input -->
+            <div class="form-outline mb-4">
+              <input
+                type="text"
+                [(ngModel)]="supplier.postalCode"
+                name="postalCode"
+                class="form-control"
+                placeholder="Postal Code"
+              />
+              <label class="form-label" for="postalCode">Postal Code</label>
+            </div>
+  
+            <!-- Country input -->
+            <div class="form-outline mb-4">
+              <input
+                type="text"
+                [(ngModel)]="supplier.country"
+                name="country"
+                class="form-control"
+                placeholder="Country"
+              />
+              <label class="form-label" for="country">Country</label>
+            </div>
+  
+            <!-- Phone input -->
+            <div class="form-outline mb-4">
+              <input
+                type="tel"
+                [(ngModel)]="supplier.phone"
+                name="phone"
+                class="form-control"
+                placeholder="(555) 123-4567"
+              />
+              <label class="form-label" for="phone">Phone</label>
+            </div>
+  
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-light">Actualizar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">LEONMME</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav w-100 d-flex">
+        <a class="nav-link" href="" routerLink="/">Dashoboard</a>
+        @if (loginService.esLogueado()) {
+        <a class="nav-link" href="" routerLink="/categories">Categorías</a>
+        <a class="nav-link" href="" routerLink="/shippers">Transportistas</a>
+        <a class="nav-link" href="" routerLink="/suppliers">Proveedores</a>
+        <a class="nav-link" href="" routerLink="/orders">Órdenes</a>
+        <a class="nav-link" href="" routerLink="/products">Productos</a>
+        }
+        @if (loginService.esLogueado()) {
+          <a href="" (click)="loginService.cerrarSesion()" class="cta-button ms-auto">Cerrar Sesion</a>
+        }
+        @else{
+          <a href="" routerLink="/login" class="cta-button ms-auto">Inicio de Sesión</a>
+        }
+      </div>
+    </div>
+  </div>
+</nav>

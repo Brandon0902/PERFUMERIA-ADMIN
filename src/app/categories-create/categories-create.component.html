@@ -1,0 +1,19 @@
+<div class="formulario-container">
+    <form class="form-grid" (ngSubmit)="saveCategory()">
+        <div>
+            <label for="inputCategoryName" class="form-label text-white">Category Name</label>
+            <input type="text" [(ngModel)]="category.categoryName" name="categoryName" class="form-control" id="inputCategoryName" placeholder="Enter category name" required>
+        </div>
+        <div>
+            <label for="inputDescription" class="form-label text-white">Description</label>
+            <textarea [(ngModel)]="category.description" name="description" class="form-control" id="inputDescription" rows="4" placeholder="Enter description" required></textarea>
+        </div>
+        <div>
+            <label for="inputImage" class="form-label text-white">Image</label>
+            <input type="file" (change)="onFileChange($event)" class="form-control" id="inputImage" accept="image/*">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="panel">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-sm-12 col-xs-12">
+                <button (click)="createProduct()" class="btn btn-sm btn-primary pull-left">
+                  <mat-icon>add</mat-icon> Add New
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Action</th>
+                  <th>#</th>
+                  <th>Product Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Category</th>
+                  <th>Supplier</th> <!-- Nueva columna para el proveedor -->
+                  <th>Image</th>
+                  <th>Stock</th>
+                  <th>Discontinued</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of products; let i = index">
+                  <td>
+                    <ul class="action-list">
+                      <li><a href="#" (click)="openEditModal(product)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal"><mat-icon>edit</mat-icon></a></li>
+                      <li><a href="#" (click)="deleteProduct(product._id)" class="btn btn-danger"><mat-icon>delete</mat-icon></a></li>
+                    </ul>
+                  </td>
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.description }}</td>
+                  <td>${{ product.price }}</td>
+                  <td>{{ product.categoryName || 'N/A' }}</td> <!-- Nombre de la categoría -->
+                  <td>{{ product.supplierName || 'N/A' }}</td> <!-- Nombre del proveedor -->
+                  <td><img [src]="product.image" alt="{{ product.name }}" style="width: 50px; height: auto;"></td>
+                  <td>{{ product.unitsInStock }}</td>
+                  <td>{{ product.discontinued ? 'Yes' : 'No' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal para Editar Producto -->
+  <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductLabel" aria-hidden="true">
+    <div class="modal-dialog d-flex justify-content-center">
+      <div class="modal-content w-75 custom-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProductLabel">Edit Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-white bg-dark p-4">
+          <form (ngSubmit)="updateProduct()">
+            <!-- Product Name input -->
+            <div class="form-outline mb-4">
+              <input type="text" [(ngModel)]="product.name" name="name" class="form-control" placeholder="Product Name" />
+              <label class="form-label" for="name">Name</label>
+            </div>
+  
+            <!-- Description input -->
+            <div class="form-outline mb-4">
+              <textarea [(ngModel)]="product.description" name="description" class="form-control" rows="3" placeholder="Product Description"></textarea>
+              <label class="form-label" for="description">Description</label>
+            </div>
+  
+            <!-- Price input -->
+            <div class="form-outline mb-4">
+              <input type="number" [(ngModel)]="product.price" name="price" class="form-control" placeholder="$99.99" />
+              <label class="form-label" for="price">Price</label>
+            </div>
+  
+            <!-- Category input -->
+            <div class="form-outline mb-4">
+              <input type="text" [(ngModel)]="product.categoryName" name="categoryName" class="form-control" placeholder="Category Name" />
+              <label class="form-label" for="categoryName">Category</label>
+            </div>
+  
+            <!-- Supplier input -->
+            <div class="form-outline mb-4">
+              <input type="text" [(ngModel)]="product.supplierName" name="supplierName" class="form-control" placeholder="Supplier Name" />
+              <label class="form-label" for="supplierName">Supplier</label>
+            </div>
+  
+            <!-- Stock input -->
+            <div class="form-outline mb-4">
+              <input type="number" [(ngModel)]="product.unitsInStock" name="unitsInStock" class="form-control" placeholder="Stock Quantity" />
+              <label class="form-label" for="unitsInStock">Stock</label>
+            </div>
+  
+            <!-- Discontinued toggle -->
+            <div class="form-check form-switch mb-4">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="product.discontinued" name="discontinued" id="isDiscontinued">
+              <label class="form-check-label" for="isDiscontinued">Discontinued</label>
+            </div>
+  
+            <!-- Image upload field -->
+            <div class="form-outline mb-4">
+              <input type="file" (change)="onFileChange($event)" class="form-control" accept="image/*" />
+              <label class="form-label" for="imageUpload">Upload new image</label>
+            </div>
+  
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-light">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,31 @@
+.custom-navbar {
+    border-bottom: 2px solid black; /* Contorno negro */
+  }
+  
+  .navbar .navbar-brand,
+  .navbar .navbar-nav .nav-link {
+    color: white; /* Texto blanco */
+  }
+  
+  /* Asegurarse de que el botón de hamburguesa también sea visible contra el fondo oscuro */
+  .navbar-toggler {
+    color: white;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 0.5em 1em; /* Tamaño del botón */
+    font-size: 1em; /* Tamaño de la fuente del botón */
+    color: black; /* Color del texto del botón */
+    background-color: aquamarine; /* Color de fondo del botón */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 2px solid black; /* Borde negro alrededor del botón */
+    margin-top: 0; /* Eliminar margen superior */
+  }
+  
+  .cta-button:hover {
+    background-color: darkcyan; /* Cambia el color de fondo al pasar el ratón por encima */
+    color: white; /* Cambia el color del texto al pasar el ratón por encima */
+  }
+  

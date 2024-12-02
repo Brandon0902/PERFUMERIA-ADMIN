@@ -1,0 +1,92 @@
+<div class="formulario-container">
+    <form class="form-grid" (ngSubmit)="saveSupplier()">
+      <div>
+        <label for="inputCompanyName" class="form-label text-white">Company Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCompanyName"
+          placeholder="Enter company name"
+          [(ngModel)]="companyName"
+          name="companyName"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputAddress" class="form-label text-white">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress"
+          placeholder="Enter address"
+          [(ngModel)]="address"
+          name="address"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputCity" class="form-label text-white">City</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCity"
+          placeholder="Enter city"
+          [(ngModel)]="city"
+          name="city"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputRegion" class="form-label text-white">Region</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputRegion"
+          placeholder="Enter region"
+          [(ngModel)]="region"
+          name="region"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputPostalCode" class="form-label text-white">Postal Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputPostalCode"
+          placeholder="Enter postal code"
+          [(ngModel)]="postalCode"
+          name="postalCode"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputCountry" class="form-label text-white">Country</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCountry"
+          placeholder="Enter country"
+          [(ngModel)]="country"
+          name="country"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputPhone" class="form-label text-white">Phone</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="inputPhone"
+          placeholder="Enter phone number"
+          [(ngModel)]="phone"
+          name="phone"
+          required
+        />
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+  

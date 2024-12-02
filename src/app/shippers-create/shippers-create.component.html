@@ -1,0 +1,43 @@
+<div class="formulario-container">
+    <form class="form-grid" (ngSubmit)="saveShipper()">
+      <div>
+        <label for="inputCompanyName" class="form-label text-white">Company Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCompanyName"
+          placeholder="Enter company name"
+          [(ngModel)]="companyName"
+          name="companyName"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputPhone" class="form-label text-white">Phone</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="inputPhone"
+          placeholder="Enter phone number"
+          [(ngModel)]="phone"
+          name="phone"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputImage" class="form-label text-white">Image</label>
+        <input
+          type="file"
+          class="form-control"
+          id="inputImage"
+          (change)="onFileChange($event)"
+          required
+          accept="image/*"
+        />
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+  

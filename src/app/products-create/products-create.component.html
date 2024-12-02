@@ -1,0 +1,99 @@
+<div class="formulario-container">
+    <form class="form-grid" (ngSubmit)="saveProduct()">
+      <div>
+        <label for="inputName" class="form-label text-white">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputName"
+          placeholder="Enter product name"
+          [(ngModel)]="name"
+          name="name"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputSupplierName" class="form-label text-white">Supplier Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputSupplierName"
+          placeholder="Enter supplier name"
+          [(ngModel)]="supplierName"
+          name="supplierName"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputCategoryName" class="form-label text-white">Category Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCategoryName"
+          placeholder="Enter category name"
+          [(ngModel)]="categoryName"
+          name="categoryName"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputPrice" class="form-label text-white">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="inputPrice"
+          placeholder="Enter price"
+          [(ngModel)]="price"
+          name="price"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputDescription" class="form-label text-white">Description</label>
+        <textarea
+          class="form-control"
+          id="inputDescription"
+          placeholder="Enter description"
+          [(ngModel)]="description"
+          name="description"
+          required
+        ></textarea>
+      </div>
+      <div>
+        <label for="inputUnitsInStock" class="form-label text-white">Units In Stock</label>
+        <input
+          type="number"
+          class="form-control"
+          id="inputUnitsInStock"
+          placeholder="Enter units in stock"
+          [(ngModel)]="unitsInStock"
+          name="unitsInStock"
+          required
+        />
+      </div>
+      <div>
+        <label for="inputDiscontinued" class="form-label text-white">Discontinued</label>
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="inputDiscontinued"
+          [(ngModel)]="discontinued"
+          name="discontinued"
+        />
+      </div>
+      <div>
+        <label for="inputImage" class="form-label text-white">Image</label>
+        <input
+          type="file"
+          class="form-control"
+          id="inputImage"
+          (change)="onFileChange($event)"
+          accept="image/*"
+        />
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+  

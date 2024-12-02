@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="panel">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-sm-12 col-xs-12">
+                <button (click)="createCategory()" class="btn btn-sm btn-primary pull-left">
+                  <mat-icon>add</mat-icon> Add New
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Action</th>
+                  <th>#</th>
+                  <th>Category Name</th>
+                  <th>Description</th>
+                  <th>Image</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let category of categories; let i = index">
+                  <td>
+                    <ul class="action-list">
+                      <li><a href="#" (click)="openEditModal(category)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCategoryModal"><i class="material-icons">edit</i></a></li>
+                      <li><a href="#" (click)="deleteCategory(category._id)" class="btn btn-danger"><mat-icon>delete</mat-icon></a></li>
+                    </ul>
+                  </td>
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ category.categoryName }}</td>
+                  <td>{{ category.description }}</td>
+                  <td><img [src]="category.image" alt="{{ category.categoryName }}" style="width: 50px; height: auto;"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="editCategoryModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog d-flex justify-content-center">
+      <div class="modal-content w-75 custom-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Edit Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-white bg-dark p-4">
+          <form (ngSubmit)="updateCategory()">
+            <!-- Category Name input -->
+            <div class="form-outline mb-4">
+              <input type="text" [(ngModel)]="category.categoryName" name="name" class="form-control" placeholder="Nombre de la categoría" />
+              <label class="form-label" for="name2">Name</label>
+            </div>
+  
+            <!-- Description input -->
+            <div class="form-outline mb-4">
+              <textarea [(ngModel)]="category.description" name="description" class="form-control" rows="3" placeholder="Descripción de la categoría"></textarea>
+              <label class="form-label" for="description2">Description</label>
+            </div>
+  
+            <!-- Image upload field -->
+            <div class="form-outline mb-4">
+              <input type="file" (change)="onFileChange($event)" class="form-control" accept="image/*" />
+              <label class="form-label" for="categoryImageUpload">Subir nueva imagen</label>
+            </div>
+  
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-light">Actualizar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
